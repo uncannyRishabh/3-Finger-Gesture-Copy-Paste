@@ -3,13 +3,10 @@ package com.uncanny.gesturecopypaste;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.MotionEvent;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class GestureCP extends androidx.appcompat.widget.AppCompatEditText {
@@ -38,11 +35,11 @@ public class GestureCP extends androidx.appcompat.widget.AppCompatEditText {
     public boolean onTouchEvent(MotionEvent event) {
         int action = event.getActionMasked();
         int pointerIndex = event.getActionIndex();
-        int pointerId = event.getPointerId(pointerIndex);
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN: {
+                performClick();
                 pointers[pointerIndex] = (int) event.getX(pointerIndex);
                 pointers[pointerIndex+3] = (int) event.getY(pointerIndex);
 
@@ -89,6 +86,7 @@ public class GestureCP extends androidx.appcompat.widget.AppCompatEditText {
 
                 if(iArea !=0 && fArea!=0){
                     if(iArea > fArea) {
+                        Log.e(TAG, "onTouchEvent: COPY from if");
                         int startSelection = this.getSelectionStart();
                         int endSelection = this.getSelectionEnd();
                         if (!Objects.equals(this.getText(), null)) {
@@ -97,20 +95,16 @@ public class GestureCP extends androidx.appcompat.widget.AppCompatEditText {
                             clipboard.setPrimaryClip(clip);
                         }
 
-//                        Log.e(TAG, "onTouchEvent: TEXT : " + selectedText);
                     }
                     if(iArea < fArea) {
-//                        Log.e(TAG, "onTouchEvent: PASTE from else");
+                        Log.e(TAG, "onTouchEvent: PASTE from else");
                         this.append(clipboard.getPrimaryClip().getItemAt(0).getText());
                     }
+                    Log.e(TAG, "onTouchEvent: "+((iArea > fArea) ? "COPY" : "PASTE"));
+                    Log.e(TAG, "onTouchEvent: fArea = "+fArea+" - iarea = "+iArea+" = "+(fArea - iArea));
                 }
 
-//                Log.e(TAG, "onTouchEvent: fArea = "+fArea+" - iarea = "+iArea+" = "+(fArea - iArea));
                 iArea =0; fArea=0; //RESET VARS
-
-//                Log.e(TAG, "onTouchEvent: UP");
-//                Log.e(TAG, "onTouchEvent: "+((iArea > fArea) ? "COPY" : "PASTE"));
-
                 return super.onTouchEvent(event);
             }
         }
@@ -118,4 +112,8 @@ public class GestureCP extends androidx.appcompat.widget.AppCompatEditText {
         return super.onTouchEvent(event);
     }
 
+    @Override
+    public boolean performClick() {
+        return super.performClick();
+    }
 }
