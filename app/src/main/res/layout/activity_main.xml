@@ -38,6 +38,9 @@
         android:paddingVertical="24dp"
         android:gravity="top"
         android:background="@null"
+        android:textSize="15sp"
+        android:imeOptions="flagNoFullscreen|flagNoExtractUi"
+        android:text="ABCDEFGHIJ \nB\nC\nD\nE\nF\nG\nH\nI\nJ"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

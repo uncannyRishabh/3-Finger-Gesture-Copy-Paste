@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Rishabh Raj Gupta/AndroidStudioProjects/3FingerGestureCopyPaste/app/src/main/res/layout/activity_main.xml" value="0.1484375" />
+        <entry key="..\:/Users/Rishabh Raj Gupta/AndroidStudioProjects/3FingerGestureCopyPaste/app/src/main/res/drawable/rounded.xml" value="0.2115" />
+        <entry key="..\:/Users/Rishabh Raj Gupta/AndroidStudioProjects/3FingerGestureCopyPaste/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Rishabh Raj Gupta/AndroidStudioProjects/3FingerGestureCopyPaste/app/src/main/res/layout/uncanny_toast.xml" value="1.5" />
       </map>
     </option>
   </component>
